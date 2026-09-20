@@ -3,12 +3,13 @@ import { getFirestore, doc, setDoc, updateDoc, onSnapshot, getDoc } from "https:
 
 /* Paste your Firebase web config here. See SETUP.md. */
 const firebaseConfig = {
-  apiKey: "PASTE_API_KEY",
-  authDomain: "PASTE_PROJECT.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_PROJECT.appspot.com",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId: "PASTE_APP_ID"
+  apiKey: "PASTE YOUR apiKey HERE",
+  authDomain: "charades-2.firebaseapp.com",
+  projectId: "charades-2",
+  storageBucket: "charades-2.firebasestorage.app",
+  messagingSenderId: "PASTE YOUR messagingSenderId HERE",
+  appId: "PASTE YOUR appId HERE",
+  measurementId: "PASTE YOUR measurementId HERE"
 };
 const app = initializeApp(firebaseConfig), db = getFirestore(app);
 const CARDS = ["Elephant","Guitar","Swimming","Pizza","Superhero","Monkey","Dancing","Astronaut","Toothbrush","Roller coaster","Basketball","Rainstorm","Detective","Popcorn","Sleeping","Robot","Dragon","Skiing","Firefighter","Birthday cake","Penguin","Surfing","Magic trick","Photographer","Zombie","Camping","Helicopter","Chef","Tennis","Haunted house","Pirate","Lighthouse","Bowling","Ice skating","Juggling","Vampire","Gardening","Pilot","Treasure hunt","Disco dancing","Alien","Mountain climbing","Movie theater","Snorkeling","Cowboy","Wedding","Pancakes","Yoga","Race car","Supermarket","Mermaid","Fishing","Doctor","Karate","Beach volleyball","Snowman","Detective","Playing drums","Roller skating","Lion","Flying a kite","Building a sandcastle","Traffic jam","Birthday party","Ghost","Rock star","Making a sandwich","Camping tent","Bus driver","Photobooth","Dragonfly","Washing a car","Doing homework","Playing chess","Lost tourist","Ice cream truck","Fireworks","News reporter","Baking a cake","Gardener","Treasure chest","Window washer","Singing opera","Space station","Traffic cop","Tornado","Librarian","Making coffee","Puppet show","Mountain biker","Time traveler","Escape room","Riding a camel","Opening a stubborn jar","Invisible person","Robot vacuum","Walking on the moon","Airport security","Video game boss","Photographer hiding from paparazzi"];
