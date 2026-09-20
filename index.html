@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#e32b09">
+  <title>Grid & Go — Custom Charades</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="race-bg"></div>
+  <header class="topbar">
+    <div class="logo"><span class="flag"></span> GRID<span>&</span>GO</div>
+    <div class="lap">CHARADES / LIVE GAME</div>
+  </header>
+
+  <main id="app">
+    <section id="home" class="screen active">
+      <div class="hero">
+        <div class="eyebrow">FRIENDS • TWO TEAMS • 60 SECONDS</div>
+        <h1>READY.<br><span>SET. ACT!</span></h1>
+        <p>Join from your own phone, pick a team, then race the clock to get your teammates to guess the card.</p>
+        <button class="primary" onclick="show('create')">CREATE GAME <b>→</b></button>
+        <button class="secondary" onclick="show('join')">JOIN A GAME</button>
+      </div>
+      <div class="track-card">
+        <div class="track-line"></div>
+        <div class="mini-card"><b>01</b><span>ACT</span></div>
+        <div class="mini-card"><b>02</b><span>GUESS</span></div>
+        <div class="mini-card"><b>03</b><span>POINT</span></div>
+      </div>
+    </section>
+
+    <section id="create" class="screen">
+      <button class="back" onclick="show('home')">← BACK</button>
+      <div class="panel">
+        <div class="eyebrow">RACE CONTROL</div>
+        <h2>Create a game</h2>
+        <label>Your name<input id="hostName" maxlength="18" placeholder="e.g. Tala"></label>
+        <button class="primary" onclick="createGame()">CREATE ROOM →</button>
+        <p class="hint">Your room code will appear next. Share it with everyone.</p>
+      </div>
+    </section>
+
+    <section id="join" class="screen">
+      <button class="back" onclick="show('home')">← BACK</button>
+      <div class="panel">
+        <div class="eyebrow">JOIN GRID</div>
+        <h2>Join a game</h2>
+        <label>Your name<input id="joinName" maxlength="18" placeholder="Your name"></label>
+        <label>Room code<input id="roomCode" maxlength="6" placeholder="ABC123" autocapitalize="characters"></label>
+        <button class="primary" onclick="joinGame()">JOIN ROOM →</button>
+        <p id="joinError" class="error"></p>
+      </div>
+    </section>
+
+    <section id="lobby" class="screen">
+      <div class="room-head">
+        <div><div class="eyebrow">ROOM</div><strong id="roomLabel">------</strong></div>
+        <button class="copy" onclick="copyRoom()">COPY CODE</button>
+      </div>
+      <div class="panel">
+        <h2>Pick your team</h2>
+        <div class="team-grid">
+          <button class="team team-a" onclick="pickTeam('A')"><span>TEAM A</span><b id="countA">0</b></button>
+          <button class="team team-b" onclick="pickTeam('B')"><span>TEAM B</span><b id="countB">0</b></button>
+        </div>
+        <div class="players" id="players"></div>
+        <button id="startBtn" class="primary" onclick="startGame()" disabled>START GAME</button>
+        <p class="hint">Everyone joins on their own phone. One person per team acts each round.</p>
+      </div>
+    </section>
+
+    <section id="game" class="screen">
+      <div class="scorebar">
+        <div class="scorebox a"><span>TEAM A</span><b id="scoreA">0</b></div>
+        <div class="timer" id="timer">60</div>
+        <div class="scorebox b"><span>TEAM B</span><b id="scoreB">0</b></div>
+      </div>
+      <div class="turn" id="turnText">TEAM A TURN</div>
+      <div class="card-stage">
+        <div class="secret-card" id="card">
+          <div class="card-number" id="cardNumber">CARD 01</div>
+          <div class="word" id="word">READY?</div>
+          <button class="show-card" id="showBtn" onclick="showCard()">SHOW CARD</button>
+        </div>
+      </div>
+      <div class="game-controls">
+        <button class="wrong" onclick="skipCard()">SKIP</button>
+        <button class="got" onclick="gotPoint()">+1 GOT IT</button>
+      </div>
+      <p class="hint center">Only the actor should look at the card. Put the phone down after reading it.</p>
+    </section>
+
+    <section id="end" class="screen">
+      <div class="panel center">
+        <div class="eyebrow">FINISH LINE</div>
+        <h2 id="winnerText">GAME OVER</h2>
+        <div class="final-scores"><div><b id="finalA">0</b><span>TEAM A</span></div><div><b id="finalB">0</b><span>TEAM B</span></div></div>
+        <button class="primary" onclick="newGame()">NEW GAME</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast"></div>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
